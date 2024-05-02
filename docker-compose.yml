@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  redis:
+    restart: always
+    container_name: redis-local
+    image: redis:7.2.4-alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-dev-data:/data
+    command: bash -c "redis-server --appendonly yes --requirepass local"
+
+  postgres:
+    restart: always
+    container_name: postgres-local
+    image: postgres:14.0-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: local
+      POSTGRES_PASSWORD: local
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+volumes:
+  redis-dev-data:
+  pg-data:

@@ -1,19 +1,20 @@
 package main
 
 import (
-	"fitness-api/cmd/handlers"
-	"fitness-api/cmd/storage"
+	"fitness-api/config"
 
 	"github.com/labstack/echo/v4"
 )
 
 func main() {
+	// Initialize logger
+	config.InitLogger()
+	// Load environment variables
+	config.LoadEnv()
+	// Initialize database
+	config.InitializeDB()
 
 	e := echo.New()
-	// Define the routes
-	e.GET("/", handlers.Home)
-	// Initialize the database
-	storage.InitDB()
 	// Start the server
 	e.Logger.Fatal(e.Start(":8080"))
 }

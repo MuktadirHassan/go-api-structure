@@ -2,7 +2,12 @@ module fitness-api
 
 go 1.22.2
 
-require github.com/labstack/echo/v4 v4.12.0
+require (
+	github.com/labstack/echo/v4 v4.12.0
+	github.com/rs/zerolog v1.32.0
+)
+
+require github.com/stretchr/testify v1.9.0 // indirect
 
 require (
 	github.com/joho/godotenv v1.5.1

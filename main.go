@@ -15,6 +15,7 @@ func main() {
 	config.InitializeDB()
 
 	e := echo.New()
+
 	// Start the server
 	e.Logger.Fatal(e.Start(":8080"))
 }
